@@ -8,19 +8,27 @@ export default class GridArticle extends Component {
     super(props);
     console.log(props);
   }
+
   render() {
     return (
       <div className="GridArticle">
-        <h2>{this.props.title}</h2>
-        <p>{this.props.summary}</p>
+        <h1>{this.props.title}</h1>
+        <p>{this.props.summaryTop}</p>
+        <img src={this.props.image} alt="" className="GridArticle-Image" />
+        <p>{this.props.summaryBottom}</p>
       </div>
     );
   }
 }
 
-GridArticle.defaultProps = {};
+GridArticle.defaultProps = {
+  summaryTop: '',
+  summaryBottom: ''
+};
 
 GridArticle.propTypes = {
   title: PropTypes.string.isRequired,
-  summary: PropTypes.string.isRequired,
+  summaryTop: PropTypes.string,
+  summaryBottom: PropTypes.string,
+  image: PropTypes.string.isRequired,
 };

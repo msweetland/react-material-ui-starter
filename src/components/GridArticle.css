@@ -6,7 +6,19 @@
   border-radius: 10px;
 }
 
+.GridArticle h1{
+  font-size: 150%;
+  margin: 0 0 0.75em 0;
+}
+
 .GridArticle:hover {
-  box-shadow: 0 0 10px 0 #808080;
+  box-shadow: 0 0 5px 0 #414141;
   cursor: pointer;
+}
+
+.GridArticle-Image {
+  width: 100%;
+  height: auto;
+  margin: 0 0 0.75em 0;
+  border-radius: 10px;
 }

@@ -41,19 +41,42 @@ export default class Grid extends Component {
             columnWidth={this.state.width}
           >
             <div key="key1">
-              <GridArticle title="Article 1" height="300px" color="red" />
+              <GridArticle
+                imageTop
+                image="https://lonelyplanetwpnews.imgix.net/2017/11/borat-mankini-fines.jpg"
+                title="Article 1"
+                summaryTop="Jay likes men and penis in his anus. Jay likes men and penis in his anus. Jay likes men and penis in his anus."
+              />
             </div>
             <div key="key2">
-              <GridArticle title="Article 2" height="200px" color="gray" />
+              <GridArticle
+                image="https://lonelyplanetwpnews.imgix.net/2017/11/borat-mankini-fines.jpg"
+                title="Article 2"
+                summaryTop="Jay likes men and penis in his anus. Jay likes men and penis in his anus. Jay likes men and penis in his anus. Jay likes men and penis in his anus. Jay likes men and penis in his anus. Jay likes men and penis in his anus. Jay likes men and penis in his anus. Jay likes men and penis in his anus."
+              />
             </div>
             <div key="key3">
-              <GridArticle title="Article 3" height="500px" color="blue" />
+              <GridArticle
+                image="https://lonelyplanetwpnews.imgix.net/2017/11/borat-mankini-fines.jpg"
+                title="Article 3"
+                summaryTop="Jay likes men and penis in his anus. Jay likes men and penis in his anus."
+                summaryBottom="Jay likes men and penis in his anus. Jay likes men and penis in his anus."
+              />
             </div>
             <div key="key4">
-              <GridArticle title="Article 4" height="250px" color="blue" />
+              <GridArticle
+                imageTop
+                image="https://lonelyplanetwpnews.imgix.net/2017/11/borat-mankini-fines.jpg"
+                title="Article 4"
+                summaryTop="Jay likes men and penis in his anus. Jay likes men and penis in his anus. Gay."
+              />
             </div>
             <div key="key5">
-              <GridArticle title="Article 5" height="100px" color="green" />
+              <GridArticle
+                image="https://lonelyplanetwpnews.imgix.net/2017/11/borat-mankini-fines.jpg"
+                title="Article 5"
+                summaryTop="Jay likes men and penis in his anus. "
+              />
             </div>
           </StackGrid>
         </div>
