@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import Footer from '../containers/Footer';
 
 export default class Home extends Component {
   constructor(props) {
@@ -30,6 +30,7 @@ export default class Home extends Component {
 
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

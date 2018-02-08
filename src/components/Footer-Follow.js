@@ -2,7 +2,7 @@ import React from 'react';
 
 export default () => (
   <section>
-    <h2>Contact/Follow</h2>
+    <h2>Follow</h2>
     <ul className="icons">
       <li>
         <a href="/" className="icon style2 fa-twitter">
