@@ -37,14 +37,23 @@ nav {
   background: #585858;
 }
 
+/*
+
+.bm-burger-button:hover .bm-burger-bars {
+  background-color: #050c51;
+  opacity: 1;
+}
+
+.bm-burger-button:hover .bm-burger-bars:hover {
+  background-color: #050c51;
+  opacity: 1;
+}
+*/
+
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
   height: 24px;
   width: 24px;
-}
-
-.bm-cross-button span:hover {
-  color: #ababab;
 }
 
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-
 import Textarea from 'react-textarea-autosize';
+
+import PropTypes from 'prop-types';
 
 export default class GetInTouch extends Component {
   constructor(props) {
@@ -37,7 +38,10 @@ export default class GetInTouch extends Component {
   render() {
     return (
       <section>
-        <h2>Get in touch</h2>
+        {this.props.contactPage ?
+          <h1>Get In Touch</h1> :
+          <h2>Get in touch</h2>
+        }
         <div className="divForm">
           <div className="field half first">
             <input
@@ -88,3 +92,11 @@ export default class GetInTouch extends Component {
     );
   }
 }
+
+GetInTouch.defaultProps = {
+  contactPage: false
+};
+
+GetInTouch.propTypes = {
+  contactPage: PropTypes.bool
+};

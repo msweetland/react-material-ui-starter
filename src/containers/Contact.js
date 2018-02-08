@@ -9,7 +9,7 @@ export default () => (
   <div id="wrapper">
     <div id="header">
       <div className="inner" style={divStyle}>
-        <GetInTouch />
+        <GetInTouch contactPage />
       </div>
     </div>
   </div>
