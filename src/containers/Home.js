@@ -25,7 +25,7 @@ export default class Home extends Component {
                 <br />
                 This is a portfolio I designed with some of my projects.
                 <br />
-                Feel free to scroll to the bottom to get in touch.
+                Feel free to look around, or scroll to the bottom to get in touch.
               </p>
             </div>
 
