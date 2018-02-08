@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
 import StackGrid from 'react-stack-grid';
-import Article from './GridArticle';
-
-const divStyle = {
-  height: '50vh',
-  marginTop: '-50px'
-};
+import GridArticle from './GridArticle';
 
 export default class Grid extends Component {
   constructor(props) {
     super(props);
-    this.state = { width: 0 };
+
+    let divStyle = {
+      marginTop: '-100px',
+      marginBottom: '100px'
+    };
+
+    this.state = { width: 0, divStyle};
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
@@ -27,11 +28,21 @@ export default class Grid extends Component {
   updateWindowDimensions() {
     const width = window.innerWidth / 2;
     if (width <= 320) {
-      this.setState({ width: '100%' });
+      let divStyle = {
+        marginBottom: '100px'
+      };
+      this.setState({ width: '100%', divStyle });
     } else if (width <= 500) {
-      this.setState({ width: '50%' });
+      let divStyle = {
+        marginBottom: '100px'
+      };
+      this.setState({ width: '50%', divStyle });
     } else {
-      this.setState({ width: '33.33%' });
+      let divStyle = {
+        marginTop: '-100px',
+        marginBottom: '100px'
+      };
+      this.setState({ width: '33.33%', divStyle });
     }
   }
 
@@ -39,19 +50,26 @@ export default class Grid extends Component {
     return (
       <div id="wrapper">
         <div id="header">
-          <div className="inner" style={divStyle}>
+          <div className="inner" style={this.state.divStyle}>
             <StackGrid
-              gutterWidth={20}
+              gutterWidth={35}
+              gutterHeight={35}
               columnWidth={this.state.width}
             >
               <div key="key1">
-                <Article title="Article 1" />
+                <GridArticle title="Article 1" height="300px" color="red" />
               </div>
               <div key="key2">
-                <Article title="Article 2" />
+                <GridArticle title="Article 2" height="200px" color="gray" />
               </div>
               <div key="key3">
-                <Article title="Article 3" />
+                <GridArticle title="Article 3" height="500px" color="blue" />
+              </div>
+              <div key="key4">
+                <GridArticle title="Article 4" height="250px" color="blue" />
+              </div>
+              <div key="key5">
+                <GridArticle title="Article 5" height="100px" color="green" />
               </div>
             </StackGrid>
           </div>
