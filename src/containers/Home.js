@@ -3,9 +3,8 @@ import Footer from '../containers/Footer';
 import Grid from '../components/Grid';
 
 export default class Home extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
+  componentWillMount = () => {
+    window.scrollTo(0, 0);
   }
 
   render() {

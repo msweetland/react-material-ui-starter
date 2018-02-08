@@ -1,21 +1,28 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-
+import { withRouter } from 'react-router-dom';
 import './GridArticle.css';
 
-export default class GridArticle extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
+class GridArticle extends Component {
+  forward = () => {
+    this.props.history.push(this.props.url);
   }
 
   render() {
     return (
-      <div className="GridArticle">
+      <div className="GridArticle" onClick={this.forward} onKeyPress={() => {}}>
         <h1>{this.props.title}</h1>
-        <p>{this.props.summaryTop}</p>
-        <img src={this.props.image} alt="" className="GridArticle-Image" />
-        <p>{this.props.summaryBottom}</p>
+        {this.props.summaryTop ?
+          <p>{this.props.summaryTop}</p> :
+          null
+        }
+        {this.props.image ?
+          <img src={this.props.image} alt="" className="GridArticle-Image" /> :
+          null
+        }
+        {this.props.summaryBottom ?
+          <p>{this.props.summaryBottom}</p> : null
+        }
       </div>
     );
   }
@@ -23,7 +30,7 @@ export default class GridArticle extends Component {
 
 GridArticle.defaultProps = {
   summaryTop: '',
-  summaryBottom: ''
+  summaryBottom: '',
 };
 
 GridArticle.propTypes = {
@@ -31,4 +38,9 @@ GridArticle.propTypes = {
   summaryTop: PropTypes.string,
   summaryBottom: PropTypes.string,
   image: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  // eslint-disable-next-line
+  history: PropTypes.object.isRequired,
 };
+
+export default withRouter(GridArticle);

@@ -42,7 +42,7 @@ export default class Grid extends Component {
           >
             <div key="key1">
               <GridArticle
-                imageTop
+                url="/article_1"
                 image="https://lonelyplanetwpnews.imgix.net/2017/11/borat-mankini-fines.jpg"
                 title="Article 1"
                 summaryTop="Jay likes men and penis in his anus. Jay likes men and penis in his anus. Jay likes men and penis in his anus."

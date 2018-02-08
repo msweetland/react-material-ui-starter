@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 export default class GetInTouch extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       name: '',
       email: '',

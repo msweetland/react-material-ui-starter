@@ -11,6 +11,10 @@
   margin: 0 0 0.75em 0;
 }
 
+.GridArticle p{
+  margin: 0 0 0.75em 0;
+}
+
 .GridArticle:hover {
   box-shadow: 0 0 5px 0 #414141;
   cursor: pointer;
