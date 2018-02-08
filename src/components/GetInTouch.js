@@ -38,7 +38,7 @@ export default class GetInTouch extends Component {
     return (
       <section>
         <h2>Get in touch</h2>
-        <form>
+        <div className="divForm">
           <div className="field half first">
             <input
               type="text"
@@ -80,10 +80,10 @@ export default class GetInTouch extends Component {
           </div>
           <ul className="actions">
             <li>
-              <button value="Send" className="special">Send</button>
+              <button value="Send" className="button special">Send</button>
             </li>
           </ul>
-        </form>
+        </div>
       </section>
     );
   }
