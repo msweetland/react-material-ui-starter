@@ -57,7 +57,7 @@ export default class GetInTouch extends Component {
               type="email"
               name="email"
               id="email"
-              placeholder="Email:"
+              placeholder="Your Email:"
               value={this.state.email}
               onChange={this.changeEmail}
             />

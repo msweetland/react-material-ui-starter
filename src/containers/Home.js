@@ -7,6 +7,10 @@ export default class Home extends Component {
     window.scrollTo(0, 0);
   }
 
+  componentDadMount = () => {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     return (
       <div id="wrapper">
