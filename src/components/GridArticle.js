@@ -1,20 +1,18 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+import './GridArticle.css';
+
 export default class GridArticle extends Component {
   constructor(props) {
     super(props);
-    const styles = {
-      height: this.props.height,
-      backgroundColor: this.props.color,
-    };
-
-    this.state = {styles};
+    console.log(props);
   }
   render() {
     return (
-      <div style={this.state.styles}>
+      <div className="GridArticle">
         <h2>{this.props.title}</h2>
+        <p>{this.props.summary}</p>
       </div>
     );
   }
@@ -24,6 +22,5 @@ GridArticle.defaultProps = {};
 
 GridArticle.propTypes = {
   title: PropTypes.string.isRequired,
-  height: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
+  summary: PropTypes.string.isRequired,
 };

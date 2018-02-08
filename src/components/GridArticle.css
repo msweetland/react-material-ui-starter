@@ -1,0 +1,12 @@
+.GridArticle {
+  display: block;
+  padding: 18px 18px;
+  background: #fff;
+  box-shadow: 0 0 2px 0 #343434;
+  border-radius: 10px;
+}
+
+.GridArticle:hover {
+  box-shadow: 0 0 10px 0 #808080;
+  cursor: pointer;
+}
