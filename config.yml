@@ -8,6 +8,7 @@ machine:
 dependencies:
   override:
     - yarn
+    - sudo pip install awscli
   cache_directories:
     - ~/.cache/yarn
 
