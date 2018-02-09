@@ -22,4 +22,4 @@ deployment:
     branch: master
     commands:
       - yarn build
-      - aws s3 sync build/ s3://aws-website-personal-website-michael-sweetland-lzyc7
+      - aws s3 sync build/ s3://personal-website-michael-sweetland
