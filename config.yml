@@ -23,4 +23,4 @@ deployment:
     branch: master
     commands:
       - yarn build
-      - aws s3 sync build/ s3://aws-website-personal-website-michael-sweetland-lzyc7 --delete
+      - aws s3 sync build/ s3://aws-website-personal-website-michael-sweetland-lzyc7
