@@ -27,7 +27,7 @@ export default () => (
       />
       <Route
         component={Article}
-        path="/article_1"
+        path="/site-tutorial"
         exact
       />
       <Route

@@ -38,7 +38,7 @@ export default class GetInTouch extends Component {
     return (
       <section>
         {this.props.contactPage ?
-          <h1>Get In Touch</h1> :
+          <h1 style={{marginBottom: '1.5em'}}>Get In Touch</h1> :
           <h2>Get in touch</h2>
         }
         <div className="divForm">

@@ -12,6 +12,7 @@ class GridArticle extends Component {
     return (
       <div className="GridArticle" onClick={this.forward} onKeyPress={() => {}}>
         <h1>{this.props.title}</h1>
+        <h6>{this.props.date}</h6>
         {this.props.summaryTop ?
           <p>{this.props.summaryTop}</p> :
           null
@@ -29,15 +30,17 @@ class GridArticle extends Component {
 }
 
 GridArticle.defaultProps = {
-  summaryTop: '',
-  summaryBottom: '',
+  summaryTop: null,
+  summaryBottom: null,
+  image: null,
 };
 
 GridArticle.propTypes = {
   title: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
   summaryTop: PropTypes.string,
   summaryBottom: PropTypes.string,
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   url: PropTypes.string.isRequired,
   // eslint-disable-next-line
   history: PropTypes.object.isRequired,

@@ -2,17 +2,25 @@
   display: block;
   padding: 18px 18px;
   background: #fff;
-  box-shadow: 0 0 2px 0 #343434;
-  border-radius: 10px;
+  box-shadow: 0 0 1px 0 #343434;
+  border-radius: 3px;
+  transition: height 0.2s ease;
 }
 
 .GridArticle h1{
   font-size: 170%;
-  margin: 0 0 0.75em 0;
+  margin: 0 0 0 0;
+  transition: height 0.2s ease;
+}
+
+.GridArticle h6{
+  margin: 0 0 0.5em 0;
+  transition: height 0.2s ease;
 }
 
 .GridArticle p{
   margin: 0 0 0.75em 0;
+  transition: height 0.2s ease;
 }
 
 .GridArticle:hover {
@@ -24,5 +32,6 @@
   width: 100%;
   height: auto;
   margin: 0 0 0.75em 0;
-  border-radius: 10px;
+  border-radius: 3px;
+  transition: height 0.2s ease;
 }
