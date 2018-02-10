@@ -15,7 +15,7 @@ export default () => (
         </a>
       </li>
       <li>
-        <a href="/" className="icon style2 fa-envelope-o">
+        <a href="mailto:mjsweet@umich.edu" className="icon style2 fa-envelope-o">
           <span className="label">Email</span>
         </a>
       </li>
