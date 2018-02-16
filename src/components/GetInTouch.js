@@ -13,11 +13,12 @@ export default class GetInTouch extends Component {
       email: '',
       subject: '',
       message: '',
+      allInput: false,
       emailError: false,
       showContact: true,
-      title: 'Get In Touch',
       loading: false,
-      currentHeight: 0
+      currentHeight: 0,
+      title: 'Get In Touch'
     };
 
     this.changeInput = this.changeInput.bind(this);
@@ -37,60 +38,51 @@ export default class GetInTouch extends Component {
   }
 
   changeInput = (event) => {
-    this.setState({[event.target.name]: event.target.value});
+    const allInput = (this.state.name !== '' && this.state.email !== '' &&
+                      this.state.subject !== '' && this.state.message !== '');
+
+    this.setState({[event.target.name]: event.target.value, allInput});
   }
 
   sendMail = () => {
-    this.setState({loading: true});
-    setTimeout(() => {
-      this.setState({loading: false});
-    }, 3000);
-  }
-
-  renderEmail() {
-    return (
-      <div className="field half">
-        {this.state.emailError ?
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Your Email:"
-            value={this.state.email}
-            onChange={this.changeInput}
-          /> :
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Your Email:"
-            value={this.state.email}
-            onChange={this.changeInput}
-          />
-        }
-      </div>
-    );
+    if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.state.email)) {
+      this.setState({loading: true, title: ''});
+      setTimeout(() => {
+        this.setState({
+          loading: false, title: 'Your message has been received!', name: '', email: '', subject: '', message: ''
+        });
+      }, 3000);
+    } else {
+      // exclamation-circle
+      this.setState({loading: false, emailError: true , email: '', allInput: false});
+    }
   }
 
   renderContact() {
     return (
       <div className="fadeIn" >
-        {this.props.contactPage ?
-          <h1 style={{marginBottom: '1.5em'}}>{this.state.title}</h1> :
-          <h2>{this.state.title}</h2>
-        }
         <div className="divForm">
           <div className="field half first">
             <input
               type="text"
               name="name"
               id="name"
-              placeholder="Name:"
+              placeholder="Your Name:"
               value={this.state.name}
               onChange={this.changeInput}
             />
           </div>
-          {this.renderEmail()}
+          <div className="field half">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder={this.state.emailError ?
+                'Enter a Valid Email:' : 'Your Email:'}
+              value={this.state.email}
+              onChange={this.changeInput}
+            />
+          </div>
           <div className="field">
             <input
               type="text"
@@ -116,6 +108,7 @@ export default class GetInTouch extends Component {
                 value="Send"
                 className="button special"
                 onClick={this.sendMail}
+                disabled={!this.state.allInput}
               >
                 Send
               </button>
@@ -138,7 +131,15 @@ export default class GetInTouch extends Component {
 
   render() {
     return (
-      <section id="contactFrom">
+      <section id="contactFrom" style={{transition: 'all 0.5s ease-in-out'}}>
+        {this.props.contactPage ?
+          <h1 style={{marginBottom: '1em'}} className="fadeIn">
+            {this.state.title}
+          </h1> :
+          <h2 style={{marginBottom: '1.5em'}} className="fadeIn">
+            {this.state.title}
+          </h2>
+        }
         {this.state.loading ?
           <div
             style={{
