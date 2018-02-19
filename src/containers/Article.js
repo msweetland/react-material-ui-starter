@@ -25,7 +25,7 @@ export default class Article extends Component {
                 How was this site built?
               </h1>
               <h2>
-                02.08.2016
+                {'02.08.2016'}
               </h2>
               <h6>
                 <a href="/" className="icon fa-arrow-left return-home-article">

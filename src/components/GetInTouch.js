@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Textarea from 'react-textarea-autosize';
-
 import PropTypes from 'prop-types';
+import Spinner from 'react-spinkit';
+
+import './GetInTouch.css';
 
 export default class GetInTouch extends Component {
   constructor(props) {
@@ -10,46 +12,84 @@ export default class GetInTouch extends Component {
       name: '',
       email: '',
       subject: '',
-      message: ''
+      message: '',
+      allInput: false,
+      emailError: false,
+      showContact: true,
+      loading: false,
+      currentHeight: 0,
+      title: 'Get In Touch'
     };
-    this.changeName = this.changeName.bind(this);
-    this.changeEmail = this.changeEmail.bind(this);
-    this.changeSubject = this.changeSubject.bind(this);
-    this.changeMessage = this.changeMessage.bind(this);
+
+    this.changeInput = this.changeInput.bind(this);
+    this.sendMail = this.sendMail.bind(this);
+    this.updateHeight = this.updateHeight.bind(this);
   }
 
-  changeName = (event) => {
-    this.setState({name: event.value});
+  componentDidMount() {
+    this.updateHeight();
+    window.addEventListener('resize', this.updateHeight);
   }
 
-  changeEmail = (event) => {
-    this.setState({email: event.value});
+  updateHeight() {
+    this.setState({
+      currentHeight: document.getElementById('contactFrom').clientHeight
+    });
   }
 
-  changeSubject = (event) => {
-    this.setState({subject: event.value});
+  changeInput = (event) => {
+    const allInput = (this.state.name !== '' && this.state.email !== '' &&
+                      this.state.subject !== '' && this.state.message !== '');
+
+    this.setState({[event.target.name]: event.target.value, allInput});
   }
 
-  changeMessage = (event) => {
-    this.setState({message: event.value});
-  }
-
-  render() {
-    return (
-      <section>
-        {this.props.contactPage ?
-          <h1 style={{marginBottom: '1.5em'}}>Get In Touch</h1> :
-          <h2>Get in touch</h2>
+  sendMail = () => {
+    if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.state.email)) {
+      this.setState({loading: true, title: ''});
+      const url = 'https://60uoel6lh6.execute-api.us-east-1.amazonaws.com/prod/postContact';
+      fetch(url, {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify({
+          email: this.state.email,
+          name: this.state.name,
+          subject: this.state.subject,
+          message: this.state.message
+        }),
+        headers: {
+          'Content-Type': 'application/json',
         }
+      }).then(res => {
+        if (res.ok) {
+          this.setState({
+            loading: false, title: 'Your message has been received!', name: '', email: '', subject: '', message: ''
+          });
+        } else {
+          this.setState({
+            loading: false, title: 'Something went wrong, try again.',
+          });
+        }
+      });
+    } else {
+      // exclamation-circle
+      this.setState({
+        loading: false, emailError: true , email: '', allInput: false
+      });
+    }
+  }
+
+  renderContact() {
+    return (
+      <div className="fadeIn" >
         <div className="divForm">
           <div className="field half first">
             <input
               type="text"
               name="name"
               id="name"
-              placeholder="Name:"
+              placeholder="Your Name:"
               value={this.state.name}
-              onChange={this.changeName}
+              onChange={this.changeInput}
             />
           </div>
           <div className="field half">
@@ -57,19 +97,20 @@ export default class GetInTouch extends Component {
               type="email"
               name="email"
               id="email"
-              placeholder="Your Email:"
+              placeholder={this.state.emailError ?
+                'Enter a Valid Email:' : 'Your Email:'}
               value={this.state.email}
-              onChange={this.changeEmail}
+              onChange={this.changeInput}
             />
           </div>
           <div className="field">
             <input
               type="text"
-              name="Subject"
-              id="name"
+              name="subject"
+              id="subject"
               placeholder="Subject:"
               value={this.state.subject}
-              onChange={this.changeSubject}
+              onChange={this.changeInput}
             />
           </div>
           <div className="field">
@@ -78,15 +119,66 @@ export default class GetInTouch extends Component {
               id="message"
               placeholder="Message:"
               value={this.state.message}
-              onChange={this.changeMessage}
+              onChange={this.changeInput}
             />
           </div>
           <ul className="actions">
             <li>
-              <button value="Send" className="button special">Send</button>
+              <button
+                value="Send"
+                className="button special"
+                onClick={this.sendMail}
+                disabled={!this.state.allInput}
+              >
+                Send
+              </button>
             </li>
           </ul>
         </div>
+      </div>
+    );
+  }
+
+  renderForm() {
+    return (
+      <div>
+        {this.state.showContact ?
+         this.renderContact() : null}
+      </div>
+    );
+  }
+
+
+  render() {
+    return (
+      <section id="contactFrom" style={{transition: 'all 0.5s ease-in-out'}}>
+        {this.props.contactPage ?
+          <h1 style={{marginBottom: '1em'}} className="fadeIn">
+            {this.state.title}
+          </h1> :
+          <h2 style={{marginBottom: '1.5em'}} className="fadeIn">
+            {this.state.title}
+          </h2>
+        }
+        {this.state.loading ?
+          <div
+            style={{
+              height: this.state.currentHeight,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+
+            }}
+          >
+            <Spinner
+              fadeIn="half"
+              name="double-bounce"
+              style={{width: '50px', height: '50px'}}
+            />
+          </div>
+            :
+          this.renderForm()
+        }
       </section>
     );
   }

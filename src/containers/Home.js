@@ -9,7 +9,7 @@ export default class Home extends Component {
     window.scrollTo(0, 0);
   }
 
-  componentDadMount = () => {
+  componentDidMount = () => {
     window.scrollTo(0, 0);
   }
 
@@ -18,7 +18,7 @@ export default class Home extends Component {
       <div id="wrapper">
         <div id="header">
           <div className="inner">
-            <div className="Header-Title">
+            <div className="Header-Title" style={{transition: 'all 0.5s ease-in-out'}}>
               <h1>
                 Michael Sweetland.
               </h1>

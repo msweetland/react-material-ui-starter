@@ -3,7 +3,7 @@ import Follow from '../components/Footer-Follow';
 import GetInTouch from '../components/GetInTouch';
 
 export default () => (
-  <div id="wrapper">
+  <div id="wrapper" >
     <footer id="footer">
       <div className="inner">
         <GetInTouch />

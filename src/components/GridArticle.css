@@ -3,6 +3,7 @@
   padding: 18px 18px;
   background: #fff;
   box-shadow: 0 0 1px 0 #343434;
+  -webkit-box-shadow: 0 0 2px 0 #343434;
   border-radius: 3px;
   transition: height 0.2s ease;
 }
@@ -25,6 +26,7 @@
 
 .GridArticle:hover {
   box-shadow: 0 0 5px 0 #414141;
+  -webkit-box-shadow: 0 0 5px 0 #414141;
   cursor: pointer;
 }
 

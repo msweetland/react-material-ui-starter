@@ -1,8 +1,8 @@
 import React from 'react';
 
 export default () => (
-  <section>
-    <h2>Follow</h2>
+  <section style={{transition: 'all 0.5s ease-in-out'}} >
+    <h2 style={{marginBottom: '1.5em'}}>Follow</h2>
     <ul className="icons">
       <li>
         <a href="/" className="icon style2 fa-twitter">
