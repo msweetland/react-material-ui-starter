@@ -47,14 +47,34 @@ export default class GetInTouch extends Component {
   sendMail = () => {
     if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(this.state.email)) {
       this.setState({loading: true, title: ''});
-      setTimeout(() => {
-        this.setState({
-          loading: false, title: 'Your message has been received!', name: '', email: '', subject: '', message: ''
-        });
-      }, 3000);
+      const url = 'https://60uoel6lh6.execute-api.us-east-1.amazonaws.com/prod/postContact';
+      fetch(url, {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify({
+          email: this.state.email,
+          name: this.state.name,
+          subject: this.state.subject,
+          message: this.state.message
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }).then(res => {
+        if (res.ok) {
+          this.setState({
+            loading: false, title: 'Your message has been received!', name: '', email: '', subject: '', message: ''
+          });
+        } else {
+          this.setState({
+            loading: false, title: 'Something went wrong, try again.',
+          });
+        }
+      });
     } else {
       // exclamation-circle
-      this.setState({loading: false, emailError: true , email: '', allInput: false});
+      this.setState({
+        loading: false, emailError: true , email: '', allInput: false
+      });
     }
   }
 
