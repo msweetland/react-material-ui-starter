@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import Footer from '../containers/Footer';
-import Grid from '../components/Grid';
-
+import Button from 'material-ui/Button';
 import './Home.css';
 
 export default class Home extends Component {
@@ -15,29 +13,10 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div id="wrapper">
-        <div id="header">
-          <div className="inner">
-            <div className="Header-Title" style={{transition: 'all 0.5s ease-in-out'}}>
-              <h1>
-                Michael Sweetland.
-              </h1>
-              <p>
-                Full stack developer currently studying data science at the
-                University of Michigan. I specialize in building applications that use
-                some of the most cutting edge frameworks such as React, GraphQL, and Django.
-                <br />
-                <br />
-                This is a portfolio I designed with some of my projects.
-                <br />
-                Feel free to look around, or scroll to the bottom to get in touch.
-              </p>
-            </div>
-
-          </div>
-        </div>
-        <Grid />
-        <Footer />
+      <div>
+        <Button variant="raised" color="primary">
+          Hello World
+        </Button>
       </div>
     );
   }
